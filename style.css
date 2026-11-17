@@ -1,0 +1,262 @@
+/* ===== Colour palette and fonts (CSS variables) ===== */
+:root {
+  --paper: #f6f4fb;
+  --ink: #221d35;
+  --plum: #3b1f5e;
+  --plum-dark: #2a1544;
+  --teal: #0b7c78;
+  --teal-dark: #085e5b;
+  --soft: #e4def2;
+  --white: #ffffff;
+  --heading-font: "Bricolage Grotesque", Arial, sans-serif;
+  --body-font: "Figtree", Arial, sans-serif;
+}
+
+/* ===== Element selectors ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink);
+  background-color: var(--paper);
+}
+
+h1, h2, h3 {
+  font-family: var(--heading-font);
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--plum);
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--plum);
+  margin-bottom: 24px;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+p {
+  max-width: 60ch;
+  margin-bottom: 16px;
+}
+
+a {
+  color: var(--teal-dark);
+}
+
+/* ===== Page layout: sidebar plus content (flexbox) ===== */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===== Sidebar navigation (ID selector, sticky positioning) ===== */
+#sidebar {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  flex: 0 0 240px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--plum);
+  padding: 40px 32px;
+}
+
+.brand {
+  font-family: var(--heading-font);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.menu {
+  list-style: none;
+}
+
+.menu a {
+  display: block;
+  color: var(--soft);
+  text-decoration: none;
+  padding: 12px 0;
+  font-weight: 600;
+}
+
+.menu a:hover {
+  color: var(--white);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+
+/* ===== Main content ===== */
+#content {
+  flex: 1;
+  min-width: 0;
+}
+
+#content section {
+  max-width: 860px;
+  padding: 80px 64px 24px;
+}
+
+#hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lead {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+
+/* ===== Buttons ===== */
+.button {
+  display: inline-block;
+  align-self: flex-start;
+  background-color: var(--teal);
+  color: var(--white);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 999px;
+}
+
+.button:hover {
+  background-color: var(--teal-dark);
+}
+
+a:focus-visible {
+  outline: 3px solid var(--plum);
+  outline-offset: 3px;
+}
+
+/* ===== Education timeline ===== */
+.timeline {
+  list-style: none;
+  border-left: 3px solid var(--plum);
+  padding-left: 32px;
+}
+
+.stage {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.stage::before {
+  content: "";
+  position: absolute;
+  left: -43px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--teal);
+  border: 3px solid var(--paper);
+}
+
+.year {
+  font-weight: 600;
+  color: var(--teal-dark);
+  margin-bottom: 4px;
+}
+
+.stage p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== Skill cards (grid) ===== */
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 24px;
+}
+
+.skill-card {
+  background-color: var(--soft);
+  border-radius: 20px;
+  padding: 28px 24px;
+}
+
+.skill-card p {
+  margin-bottom: 0;
+}
+
+/* ===== Contact and footer ===== */
+#contact {
+  padding-bottom: 64px;
+}
+
+#footer {
+  background-color: var(--plum-dark);
+  color: var(--soft);
+  padding: 24px 64px;
+}
+
+#footer p {
+  margin: 0;
+}
+
+/* ===== Mobile layout ===== */
+@media (max-width: 800px) {
+  .layout {
+    display: block;
+  }
+
+  #sidebar {
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    padding: 16px 20px;
+    z-index: 10;
+  }
+
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 20px;
+  }
+
+  .menu a {
+    padding: 8px 0;
+  }
+
+  h1 { font-size: 3.2rem; }
+  h2 { font-size: 1.8rem; }
+
+  #content section {
+    padding: 48px 20px 16px;
+  }
+
+  #hero { min-height: 60vh; }
+  #footer { padding: 20px; }
+}
